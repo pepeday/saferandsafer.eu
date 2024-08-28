@@ -1,8 +1,11 @@
 backend:
-  name: git-gateway
-  branch: main  # Or 'master' depending on your repo
-media_folder: "static/images/uploads" # Location where images are stored
-public_folder: "/images/uploads"
+  name: github
+  repo: pepeday/saferandsafer.eu  # Replace with your repository
+  branch: master  # Or master if that is your default branch
+  base_url: https://api.netlify.com  # This points to Netlify's GitHub integration
+  auth_endpoint: /auth
+media_folder: "static/images/uploads"  # Where images will be uploaded
+public_folder: "/images/uploads"       # Where the images will be accessible from
 collections:
   - name: "posts"
     label: "Posts"
@@ -10,6 +13,6 @@ collections:
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Body", name: "body", widget: "markdown"}
-      - {label: "Date", name: "date", widget: "datetime"}
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Date", name: "date", widget: "datetime" }

@@ -1,7 +1,7 @@
 backend:
   name: github
   repo: pepeday/saferandsafer.eu  # Replace with your repository
-  branch: main  # Or master if that is your default branch
+  branch: master  # Or master if that is your default branch
   base_url: https://api.netlify.com  # This points to Netlify's GitHub integration
   auth_endpoint: /auth
 media_folder: "static/images/uploads"  # Where images will be uploaded

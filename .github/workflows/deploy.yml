@@ -20,7 +20,9 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Build
-        run: hugo --minify
+        run: |
+          hugo --minify
+          touch ./public/.nojekyll
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:

@@ -24,7 +24,6 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./  # Adjust if package.json is in a subdirectory
 
       - name: Set up environment variables
         run: |
@@ -33,7 +32,6 @@ jobs:
 
       - name: Build with Hugo
         run: hugo --minify
-        working-directory: ./  # Ensure Hugo runs in the correct directory
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
@@ -41,4 +39,3 @@ jobs:
           personal_token: ${{ secrets.GITHUB_TOKEN }}
           external_repository: pepeday/saferandsafer.eu
           publish_dir: ./public
-        working-directory: ./  # Ensure the deploy step uses the correct directory

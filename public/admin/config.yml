@@ -2,7 +2,9 @@ backend:
   name: github
   repo: pepeday/saferandsafer.eu  # Replace with your GitHub repository
   branch: master  # Or main if that's your default branch
-
+  auth:
+    client_id: $CLIENT_ID
+    client_secret: $CLIENT_SECRET
 media_folder: "static/images/uploads"  # Where images will be uploaded
 public_folder: "/images/uploads"       # Where the images will be accessible from
 

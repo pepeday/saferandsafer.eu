@@ -10,20 +10,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4  # Updated to v4
+        uses: actions/checkout@v4
 
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v3  # Updated to v3
+        uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: 'latest'
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3  # Updated to v3
+        uses: actions/setup-node@v3
         with:
-          node-version: '20'  # Specify the latest version
+          node-version: '20'
 
       - name: Install dependencies
         run: npm install
+        working-directory: ./  # Adjust if package.json is in a subdirectory
 
       - name: Set up environment variables
         run: |
@@ -32,10 +33,12 @@ jobs:
 
       - name: Build with Hugo
         run: hugo --minify
+        working-directory: ./  # Ensure Hugo runs in the correct directory
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4  # Updated to v4
+        uses: peaceiris/actions-gh-pages@v4
         with:
           personal_token: ${{ secrets.GITHUB_TOKEN }}
           external_repository: pepeday/saferandsafer.eu
           publish_dir: ./public
+        working-directory: ./  # Ensure the deploy step uses the correct directory

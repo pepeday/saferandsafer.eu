@@ -10,17 +10,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4  # Updated to v4
 
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
+        uses: peaceiris/actions-hugo@v3  # Updated to v3
         with:
           hugo-version: 'latest'
 
       - name: Setup Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3  # Updated to v3
         with:
-          node-version: '14'
+          node-version: '20'  # Specify the latest version
 
       - name: Install dependencies
         run: npm install
@@ -34,7 +34,7 @@ jobs:
         run: hugo --minify
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4  # Updated to v4
         with:
           personal_token: ${{ secrets.GITHUB_TOKEN }}
           external_repository: pepeday/saferandsafer.eu

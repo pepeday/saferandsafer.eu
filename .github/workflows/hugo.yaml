@@ -3,39 +3,26 @@ name: Deploy Hugo site to GitHub Pages
 on:
   push:
     branches:
-      - master  # Or main if that's your default branch
+      - master  # Change this to 'main' if your default branch is 'main'
 
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4  # Checks out your repository
 
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v3
+        uses: peaceiris/actions-hugo@v2  # Sets up Hugo
         with:
           hugo-version: 'latest'
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Set up environment variables
-        run: |
-          echo "CLIENT_ID=${{ secrets.CLIENT_ID }}" >> $GITHUB_ENV
-          echo "CLIENT_SECRET=${{ secrets.CLIENT_SECRET }}" >> $GITHUB_ENV
-
       - name: Build with Hugo
-        run: hugo --minify
+        run: hugo --minify  # Builds the site with Hugo
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+        uses: peaceiris/actions-gh-pages@v3  # Deploys to GitHub Pages
         with:
-          personal_token: ${{ secrets.GITHUB_TOKEN }}
-          external_repository: pepeday/saferandsafer.eu
-          publish_dir: ./public
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # Uses the GitHub token
+          publish_dir: ./public  # Publishes the content of the 'public' directory
